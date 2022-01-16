@@ -2,7 +2,6 @@ var active = false;
 var color = '#000'; // Default color for "painting in the grid"
 var randomActive = false;
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // Toggle active/inactive when mouse clicks on board 
@@ -20,10 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let newGridSize = "";
     do {
       newGridSize = prompt('Please enter the size of the new square grid (max 100)');
-    } while (newGridSize > 100 || newGridSize < 0 || isNaN(newGridSize) || !newGridSize)
+    } while (newGridSize > 100 || newGridSize < 0 || isNaN(newGridSize) )
 
     const board = document.getElementById('board');
     board.innerHTML = "";
+
+    // Avoids user entering none value in prompt
+    newGridSize ? newGridSize = newGridSize : newGridSize = 16;
 
     createGridOfSquareDivs(newGridSize);
 
@@ -40,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   });
 
-  // Rainbow color
+  // Random color
   document.getElementById('random').addEventListener('click', () => {
-
+    // Source: https://css-tricks.com/snippets/javascript/random-hex-color/ 
     color = `#${Math.floor(Math.random()*16777215).toString(16)}`
     document.getElementById('color-picker').value = color;
 
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Helpers
-function createGridOfSquareDivs(gridSize) {
+function createGridOfSquareDivs(gridSize = 16) {
   const board = document.getElementById('board');
   board.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
@@ -72,7 +74,7 @@ function createGridOfSquareDivs(gridSize) {
 
   boardItems.forEach(
     item => {
-      item.addEventListener('mousemove', (event) => { active ? event.target.style.backgroundColor = color : "" } )
+      item.addEventListener('mouseover', (event) => { active ? event.target.style.backgroundColor = color : "" } )
     });
 }
 

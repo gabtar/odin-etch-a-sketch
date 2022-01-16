@@ -1,20 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  padding: .5em;
+  font-size: bold;
+}
+
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ce7;
+}
+
+#board {
+  display: grid;
+  width: max-content;
+  justify-content: center;
+  grid-template-columns: repeat(16, auto);
+  row-gap: 1px;
+  column-gap: 1px;
+  border: 1px solid #ddd;
+}
+
+#color-picker {
+  height: 2em;
+  padding: .6em;
+}
+
+
+.footer {
+  margin: 1em;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  background-color: #ccc;
-  height: 100vh;
-  padding: 2em;
+  background-color: #8A77B8;
+  min-height: 100vh;
+  padding: 1em;
 }
 
 .controls {
-  padding: 2em;
+  padding: 1em;
 }
 
 .square-div {
@@ -32,18 +74,10 @@
   color: #fff;
   padding: .3em;
   cursor: pointer;
+  margin: .2em .5em;
 }
 
 .btn:hover {
   background-color: #3e7;
 }
 
-#board {
-  display: grid;
-  width: max-content;
-  justify-content: center;
-  grid-template-columns: repeat(16, auto);
-  row-gap: 1px;
-  column-gap: 1px;
-  border: 1px solid #ddd;
-}
